@@ -1,51 +1,22 @@
-# Simulasi Kompilasi Konstruksi While Loop
+# Simulasi Kompilasi Konstruksi If-Then-Else
 
 > Tugas Akhir Mata Kuliah Teknik Kompilasi - Representasi 4 Tahap Kompilasi
 
 ---
 
-## Deskripsi Proyek
+## Pilihan Konstruksi
 
-Proyek ini adalah simulasi sederhana dari proses kompilasi untuk konstruksi **perulangan while** dalam bahasa pemrograman. Program ini mendemonstrasikan bagaimana sebuah source code diproses melalui 4 tahapan utama kompilasi:
-
-1. **Lexical Analysis** (Analisis Leksikal)
-2. **Syntax Analysis** (Analisis Sintaks)
-3. **Semantic Analysis** (Analisis Semantik)
-4. **Three-Address Code Generation** (Generasi Kode Tiga Alamat)
+**Konstruksi yang dipilih:** Percabangan / Kondisi (If-Then-Else)
 
 ---
 
-## Tujuan
+## Pattern (Pola Sintaks) - BNF Grammar
 
-- Memahami alur kerja compiler dari source code hingga kode antara (TAC)
-- Mengimplementasikan konsep BNF Grammar dalam parsing
-- Membangun Abstract Syntax Tree (AST) dari source code
-- Menghasilkan Three-Address Code yang siap untuk optimasi dan code generation
-
----
-
-## BNF Grammar
-
-Program ini mendukung source code dengan format:
+Pola didefinisikan menggunakan pendekatan **Backus-Naur Form (BNF)** sederhana:
 
 ```bnf
-<program>      ::= <while_stmt>
+<if_stmt>      ::= "if" "(" <condition> ")" "{" <statements> "}" "else" "{" <statements> "}"
 
-<while_stmt>   ::= "while" "(" <condition> ")" "{" <statement> "}"
+<condition>    ::= <identifier> <operator> <value>
 
-<condition>    ::= <identifier> <rel_op> <number>
-
-<statement>    ::= <assignment>
-
-<assignment>   ::= <identifier> "=" <expression> ";"
-
-<expression>   ::= <identifier> "+" <number>
-                 | <identifier> "-" <number>
-                 | <number>
-                 | <identifier>
-
-<rel_op>       ::= "<" | ">" | "<=" | ">=" | "==" | "!="
-
-<identifier>   ::= letter (letter | digit)*
-
-<number>       ::= digit+
+<statements>   ::= <identifier> "=" <value>
