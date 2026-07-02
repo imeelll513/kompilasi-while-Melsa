@@ -1,4 +1,5 @@
-# Simulasi Kompilasi Konstruksi If-Then-Else
+
+# Simulasi Kompilasi Konstruksi While Loop
 
 > Tugas Akhir Mata Kuliah Teknik Kompilasi - Representasi 4 Tahap Kompilasi
 
@@ -6,7 +7,7 @@
 
 ## Pilihan Konstruksi
 
-**Konstruksi yang dipilih:** Percabangan / Kondisi (If-Then-Else)
+**Konstruksi yang dipilih:** Perulangan (Looping) - **While Loop**
 
 ---
 
@@ -15,8 +16,23 @@
 Pola didefinisikan menggunakan pendekatan **Backus-Naur Form (BNF)** sederhana:
 
 ```bnf
-<if_stmt>      ::= "if" "(" <condition> ")" "{" <statements> "}" "else" "{" <statements> "}"
+<program>      ::= <while_stmt>
 
-<condition>    ::= <identifier> <operator> <value>
+<while_stmt>   ::= "while" "(" <condition> ")" "{" <statement> "}"
 
-<statements>   ::= <identifier> "=" <value>
+<condition>    ::= <identifier> <rel_op> <number>
+
+<statement>    ::= <assignment>
+
+<assignment>   ::= <identifier> "=" <expression> ";"
+
+<expression>   ::= <identifier> "+" <number>
+                 | <identifier> "-" <number>
+                 | <number>
+                 | <identifier>
+
+<rel_op>       ::= "<" | ">" | "<=" | ">=" | "==" | "!="
+
+<identifier>   ::= letter (letter | digit)*
+
+<number>       ::= digit+
